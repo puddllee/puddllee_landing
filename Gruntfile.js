@@ -32,6 +32,12 @@ module.exports = function (grunt) {
             src: ['index.html'],
             dest: 'build/',
             filter: 'isFile'
+          }, {
+            expand: true,
+            src: ['images/**'],
+            flatten: true,
+            dest: 'build/images',
+            filter: 'isFile'
           }
         ]
       }
@@ -44,7 +50,7 @@ module.exports = function (grunt) {
       },
       dist: {
         // the files to concatenate
-        src: ['assets/**/*.js'],
+        src: ['js/**/*.js'],
         // the location of the resulting JS file
         dest: 'build/js/<%= pkg.name %>.js'
       }
@@ -64,7 +70,7 @@ module.exports = function (grunt) {
 
     jshint: {
       // define the files to lint
-      files: ['gruntfile.js', 'assets/**/*.js', 'test/**/*.js'],
+      files: ['js/main.js'],
       // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
         // more options here if you want to override JSHint defaults
@@ -99,7 +105,7 @@ module.exports = function (grunt) {
     sass: {
       build: {
         files: {
-          'build/css/master.css': 'assets/sass/master.scss'
+          'build/css/master.css': 'sass/master.scss'
         }
       }
     },
@@ -116,12 +122,12 @@ module.exports = function (grunt) {
       },
 
       js: {
-        files: ['assets/js/**/*.js'],
+        files: ['js/**/*.js'],
         tasks: ['concat', 'uglify', 'jshint']
       },
 
       css: {
-        files: ['assets/sass/**/*.scss'],
+        files: ['sass/**/*.scss'],
         tasks: ['buildcss']
       }
     }
