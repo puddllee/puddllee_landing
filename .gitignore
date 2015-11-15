@@ -90,3 +90,5 @@ dist/
 ### Sass ###
 .sass-cache/
 *.css.map
+
+build/
